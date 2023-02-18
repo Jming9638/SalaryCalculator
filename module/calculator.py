@@ -5,7 +5,11 @@ import pandas as pd
 def monthly_salary(salary):
     st.subheader(f'Salary: RM {salary:.2f}')
         
-    employer_epf = salary * 0.13
+    if salary <= 5000:
+        employer_epf = 0.13
+    else:
+        employer_epf = 0.12
+    employer_epf = salary * employer_epf
     employee_epf = salary * 0.11
     
     socso_df = pd.read_csv('socso_contribution.csv')
